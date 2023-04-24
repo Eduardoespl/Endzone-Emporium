@@ -7,4 +7,6 @@ from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     url(r'^$', onboarding, name='onboarding'),
+
+    path('iniciar_sesion/', iniciar_sesion, name="iniciar_sesion"),
 ]

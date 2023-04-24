@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="botones">
-        <a href="/login">Iniciar sesión</a>
+        <a href="/iniciar_sesion">Iniciar sesión</a>
         <a href="/register">Registrate</a>
     </div>
 </body>
@@ -29,8 +29,11 @@
         padding: 0;
         box-sizing: border-box;
     }
+    html{
+        background-image: url("/media/fondo.jpg");
+        background-size: cover;
+    }
     body{
-        background-color: green;
         font-family: 'Anton', sans-serif;
     }
     .container{
@@ -54,6 +57,8 @@
         font-family: 'Roboto', sans-serif;
         color: #1B2A41;
         font-size: 20px;
+        width: 300px;
+        text-align: center;
         padding: 10px 20px;
         border-radius: 30px;
         background-color: white;
@@ -64,6 +69,21 @@
         justify-content: center;
         align-items: center;
         gap: 25px;
+    }
+
+    @media (max-width: 394px) {
+        .botones{
+            flex-direction: column;
+        }
+
+        .container h1{
+            font-size: 45px;
+        }
+
+        img{
+            width: 150px;
+            height: 150px;
+        }
     }
 </style>
 </html>
