@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'endzone.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ENZONE',
+        'NAME': 'ENDZONE',
         'USER': 'root',
         'HOST': '127.0.0.1',
         'OPTIONS': {
