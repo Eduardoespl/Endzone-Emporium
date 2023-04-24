@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enzone Emporium</title>
+</head>
+<body>
+    <div class="main">
+        <div class="icono">
+            <img src="/media/balon.png" alt="balon">
+        </div>
+        <div class="container">
+            <h1>Enzone <br> Emporium</h1>
+        </div>
+    </div>
+    <div class="botones">
+        <a href="/login">Iniciar sesión</a>
+        <a href="/register">Registrate</a>
+    </div>
+</body>
+<style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+    *{ 
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        background-color: green;
+        font-family: 'Anton', sans-serif;
+    }
+    .container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container h1{
+        color: white;
+        font-size: 80px;
+        text-align: left;
+    }
+    .main{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+    }
+    a{
+        text-decoration: none;
+        font-family: 'Roboto', sans-serif;
+        color: #1B2A41;
+        font-size: 20px;
+        padding: 10px 20px;
+        border-radius: 30px;
+        background-color: white;
+        font-weight: bold;
+    }
+    .botones{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+    }
+</style>
+</html>
