@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Endzone Emporium</title>
+    <link rel="icon" href="/media/icono.png">
 </head>
 <body>
     <nav>
@@ -78,56 +79,56 @@
 
             <div class="card-producto">
                 <div class="producto">
-                    <img src="/media/calceta.png" alt="calceta tubo" width="150px" height="342px">
+                    <img class="Imageproduct" src="/media/cascos/riddell_speedflex.png" alt="casco speed flex">
                 </div>
                 <div class="descripcion">
-                    <p>Rayo Negro</p>
-                    <h2>CALCETA TUBO</h2>
+                    <p>Riddell</p>
+                    <h2>SPEED FLEX</h2>
+                    <h3>$10,000.00</h3>
+                </div>
+            </div>
+
+            <div class="card-producto">
+                <div class="producto">
+                    <img class="Imageproduct" src="/media/accesorios/gb_guantes.jpg" alt="calceta tubo" width="150px" height="342px">
+                </div>
+                <div class="descripcion">
+                    <p>Grip Boost</p>
+                    <h2>STEALTH 4.0</h2>
+                    <h3>$980.00</h3>
+                </div>
+            </div>
+
+            <div class="card-producto">
+                <div class="producto">
+                    <img class="Imageproduct" src="/media/cleats/nike_blancos.png" alt="calceta tubo" width="150px" height="342px">
+                </div>
+                <div class="descripcion">
+                    <p>Nike</p>
+                    <h2>VAPOR EDGE</h2>
                     <h3>$380.00</h3>
                 </div>
             </div>
 
             <div class="card-producto">
                 <div class="producto">
-                    <img src="/media/calceta.png" alt="calceta tubo" width="150px" height="342px">
+                    <img class="Imageproduct" src="/media/accesorios/nike_headband.jpg" alt="calceta tubo" width="150px" height="342px">
                 </div>
                 <div class="descripcion">
-                    <p>Rayo Negro</p>
-                    <h2>CALCETA TUBO</h2>
-                    <h3>$380.00</h3>
+                    <p>Nike</p>
+                    <h2>HEADBAND</h2>
+                    <h3>$395.00</h3>
                 </div>
             </div>
 
             <div class="card-producto">
                 <div class="producto">
-                    <img src="/media/calceta.png" alt="calceta tubo" width="150px" height="342px">
+                    <img class="Imageproduct" src="/media/accesorios/nike_guantes.jpg" alt="calceta tubo" width="150px" height="342px">
                 </div>
                 <div class="descripcion">
-                    <p>Rayo Negro</p>
-                    <h2>CALCETA TUBO</h2>
-                    <h3>$380.00</h3>
-                </div>
-            </div>
-
-            <div class="card-producto">
-                <div class="producto">
-                    <img src="/media/calceta.png" alt="calceta tubo" width="150px" height="342px">
-                </div>
-                <div class="descripcion">
-                    <p>Rayo Negro</p>
-                    <h2>CALCETA TUBO</h2>
-                    <h3>$380.00</h3>
-                </div>
-            </div>
-
-            <div class="card-producto">
-                <div class="producto">
-                    <img src="/media/calceta.png" alt="calceta tubo" width="150px" height="342px">
-                </div>
-                <div class="descripcion">
-                    <p>Rayo Negro</p>
-                    <h2>CALCETA TUBO</h2>
-                    <h3>$380.00</h3>
+                    <p>Nike</p>
+                    <h2>VAPOR JET 6.0</h2>
+                    <h3>$2000.00</h3>
                 </div>
             </div>
         </div>
@@ -136,7 +137,7 @@
         <h2 class="SectionTittle">CASCOS</h2>
         <div class="CascosContainer">
             <div class="CascosImagen">
-                <img src="/media/calceta.png">
+                <img src="/media/cascos/vicis_casco.jpg" width="280px" height="280px">
             </div>
             <a href="/cascos_page">
                 <div class="CascosButton">
@@ -149,7 +150,7 @@
         <h2 class="SectionTittle">CLEATS</h2>
         <div class="CascosContainer">
             <div class="CascosImagen">
-                <img src="/media/calceta.png">
+                <img class="ImageCat" src="/media/cleats/ua_cleats.png">
             </div>
             <a href="">
                 <div class="CascosButton">
@@ -188,6 +189,21 @@
         background-color: #282828;
         font-family: 'Roboto', sans-serif;
     }
+
+    .ImageCat{
+        width: 280px;
+        height: 280px;
+        object-fit: contain;
+        mix-blend-mode: multiply;
+    }
+
+    .Imageproduct{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        mix-blend-mode: multiply;
+    }
+
     .populares{
         display: flex;
         flex-direction: column;
