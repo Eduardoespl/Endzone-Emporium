@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post casco</title>
+</head>
+<body>
+    <form method="POST" action="/guardar_cascos/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="image">Imagen</label>
+        <input type="file" name="image" id="image" required>
+        <label for="marca">Marca</label>
+        <input type="text" name="marca" id="marca" value="{{ casco.marca }}">
+        <label for="modelo">Modelo</label>
+        <input type="text" name="modelo" id="modelo" value="{{ casco.modelo }}">
+        <label for="precio">Precio</label>
+        <input type="text" name="precio" id="precio" value="{{ casco.precio }}">
+        <label for="talla">Talla</label>
+        <input type="text" name="talla" id="talla" value="{{ casco.talla }}">
+        <input type="submit" value="Agregar" id="boton">
+
+        <a href="/cascos_page/">Cancelar</a>
+
+    </form>
+</body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    input{
+        margin: 10px;
+        border-radius: 5px;
+        border: 1px solid black;
+        padding: 5px;
+    }
+
+    label{
+        font-family: 'Anton', sans-serif;
+        letter-spacing: 1px;
+    }
+
+    #boton{
+        width: 100px;
+        height: 30px;
+        background-color: #000;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+</style>
+</html>

@@ -4,99 +4,32 @@
 <head>
 	<title>Login</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<style>
-		body,
-		html {
-			margin: 0;
-			padding: 0;
-			height: 100%;
-			background-image: url("/media/images/texture.jpg") ;
-       		background-size:cover;
-       		background-repeat:repeat;
-            display: flex;
-       		min-height: 100vh;
-       		flex-direction: column;
-		}
-		.user_card {
-			width: 350px;
-			margin-top: auto;
-			margin-bottom: auto;
-			background: #74cfbf;
-			position: relative;
-			display: flex;
-			justify-content: center;
-			flex-direction: column;
-			padding: 10px;
-			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-			border-radius: 5px;
-
-		}
-
-		.form_container {
-			margin-top: 20px;
-		}
-
-		#form-title{
-			color: #fff;
-			
-		}
-
-		.login_btn {
-			width: 100%;
-			background: #33ccff !important;
-			color: white !important;
-		}
-		.login_btn:focus {
-			box-shadow: none !important;
-			outline: 0px !important;
-		}
-		.login_container {
-			padding: 0 2rem;
-		}
-		.input-group-text {
-			background: #f7ba5b !important;
-			color: white !important;
-			border: 0 !important;
-			border-radius: 0.25rem 0 0 0.25rem !important;
-		}
-		.input_user,
-		.input_pass:focus {
-			box-shadow: none !important;
-			outline: 0px !important;
-		}
-
-		#messages{
-			background-color: grey;
-			color: #fff;
-			padding: 10px;
-			margin-top: 10px;
-		}
-	</style>
-
 </head>
 <body>
 	<div class="right">
-		<img src="/media/fondo_login.jpg" alt="login">
+		<img class="fondo" src="/media/fondo_login.jpg" alt="login">
 		<div class="texto">
-		<h1 class="titulo">Bievenido a</h1>
-		<h1 class="marca">Enzone Emporium</h1>
+			<h1 class="titulo">Bievenido a</h1>
+			<h1 class="marca">Enzone Emporium</h1>
 		</div>
 	</div>
 	<div class="left">
-		<a href="/onboarding">
+		<a href="/" class="LinkRegresar">
 			<div class="regresar">
 				<img src="/media/arrow.svg" alt="regresar">
 			</div>
 		</a>
 		<div class="formulario">
 			<h1 class="login">Iniciar <br> Sesión</h1>
-			<form action="" method="POST">
-				<input type="text" placeholder="Nombre">
-				<input type="password" placeholder="Contraseña">
-				<button type="submit">Iniciar sesión</button>
+			<form  method='POST' action="">
+				{% csrf_token %}
+				<input type="text" placeholder="Nombre" name="username">
+				<input type="password" placeholder="Contraseña" name="password">
+				<input type="submit" value="Iniciar sesión" class="button">
 			</form>
+		</div>
+		<div class="registro">
+			<p>¿No tienes una cuenta? <a href="/registrar" class="registrate">Registrate</a></p>
 		</div>
 	</div>
 </body>
@@ -104,11 +37,15 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
+	*{
+		box-sizing: border-box;
+	}
 	body{
 		margin: 0;
 		padding: 0;
 		display: flex;
 		flex-direction: row;
+		overflow: hidden;
 	}
 	.regresar{
 		background-color: #1B2A41;
@@ -119,6 +56,11 @@
 		justify-content: center;
 		align-items: center;
 	}
+
+	.LinkRegresar{
+		margin-right: 280px;
+	}
+
 	.regresar img{
 		width: 20px;
 		height: 20px;
@@ -126,7 +68,7 @@
 	.titulo{
 		font-family: 'Roboto', sans-serif;
 		font-size: 60px;
-		color: #1B2A41;
+		color: black;
 		margin: 0;
 	}
 	.marca{
@@ -135,5 +77,74 @@
 		color: #FF4136;
 		margin: 0;
 	}
+	.login{
+		font-family: 'Roboto', sans-serif;
+		font-size: 45px;
+		font-weight: bold;
+		color: #1B2A41;
+	}
+	form{
+		display: flex;
+		flex-direction: column;
+	}
+	input{
+		width: 320px;
+		height: 65px;
+		border-radius: 15px;
+		border: none;
+		font-size: 20px;
+		background-color: rgba(217,217,217,0.5);
+		margin-bottom: 25px;
+		padding-left: 20px;
+	}
+	.button{
+		height: 50px;
+		width: 320px;
+		border-radius: 15px;
+		border: none;
+		background-color: #1B2A41;
+		color: #fff;
+		font-size: 20px;
+		cursor: pointer;
+	}
+	p{
+		font-family: 'Roboto', sans-serif;
+		font-size: 15px;
+		color: #1B2A41;
+	}
+	.registro{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.registrate{
+		color: #FF4136;
+		text-decoration: none;
+	}
+	.left{
+		width: 50%;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.texto{
+		position: absolute;
+		top: 50%;
+		left: 35px;
+	}
+	.fondo{
+		width: 100%;
+		height: 100vh;
+		object-fit: cover;
+	}
+	.right{
+		width: 60%;
+		height: 100vh;
+		position: relative;
+		display: flex;
+	}
+	
 </style>
 </html>

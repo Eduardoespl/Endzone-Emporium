@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cascos</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <nav>
+        <h1 class="nombre">
+            Endzone Emporium
+        </h1>
+        <ul>
+            <li><a href="/dashboard">DASHBOARD</a></li>
+            <li><a href="">CASCOS</a></li>
+            <li><a href="">CLEATS</a></li>
+            <li><a href="">ACCESORIOS</a></li>
+        </ul>
+        <div class="AccountIcon">
+            <img src="/media/user.svg" alt="user">
+        </div>
+    </nav>
+    <div class="UserDetails">
+        <p class="UserName">{{ user }}</p>
+        {% if request.user.is_superuser %}
+        <p class="UserType">Administrador</p>
+        {% else %}
+        <p class="UserType">Usuario</p>
+        {% endif %}
+        <a href="{% url 'logout' %}" class="logout"><p>logout</p></a>
+    </div>
+
+    <div class="CardContainer">
+
+    </div>
+
+    <a href="/post_casco">
+        <div class="Agregar">
+            +
+        </div>
+    </a>
+
+    <div class="footer">
+        <p>Eduardo @ 2023</p>
+    </div>
+</body>
+<style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+    
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .Marca{
+        font-size: 30px;
+    }
+
+    .Modelo{
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+    .Precio{
+        font-size: 35px;
+        font-weight: bold;
+        color: #4362E3;
+    }
+
+    .Details{
+        font-size: 30px;
+    }
+
+    body{
+        background-color: #282828;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .titulo{
+        font-size: 45px;
+        color: black;
+        margin-bottom: 50px;
+        font-weight: bolder;
+        font-style: italic;
+    }
+
+    a{
+        text-decoration: none;
+        color: white;
+    }
+
+    .nombre{
+        font-size: 20px;
+        font-family: 'Anton', sans-serif;
+        font-style: normal;
+        color: white;
+        letter-spacing: 1px;
+    }
+    nav{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 50px 30px 50px 30px;
+    }
+    li{
+        list-style: none;
+        display: inline-block;
+        padding: 10px;
+        font-weight: bold;
+    }
+    li:hover{
+        background-color: #FF4136;
+        border-radius: 10px;
+    }
+
+    .UserDetails{
+        position: absolute;
+        top: 100px;
+        right: 0px;
+        width: 250px;
+        height: 200px;
+        background-color: #3F3D3D;
+        color: white;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-right: 30px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+    }
+
+    .logout{
+        text-decoration: none;
+        color: white;
+    }
+
+    .UserName{
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    .UserType{
+        font-size: 20px;
+    }
+
+    .footer{
+        padding: 50px;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .CardContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+    }
+
+    .Card{
+        width: 600px;
+        height: 300px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .CardImage{
+        width: 50%;
+        height: 100%;
+        background-color: #EBEBEB;
+        border-radius: 15px 0 0 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 4px 0px 4px rgba(0,0,0,0.25);
+        z-index: 1;
+    }
+
+    .CardDetails{
+        width: 50%;
+        height: 100%;
+        background-color: #FFFFFF;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0 15px 15px 0;
+    }
+
+    .Delete{
+        font-family: sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        color: red;
+    }
+
+    .Agregar{
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #4362E3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        float: right;
+        font-size: 20px;
+        font-weight: bold;
+        margin-right: 5%;
+        margin-top: 20px;
+    }
+
+    .image{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 15px 0 0 15px;
+    }
+</style>
+<script>
+
+    const AccountIcon = document.querySelector(".AccountIcon");
+    const UserDetails = document.querySelector(".UserDetails");
+    const Contenedor = document.querySelector(".CardContainer");
+
+    AccountIcon.addEventListener("click", () => {
+        UserDetails.style.display = "flex";
+    });
+
+    Contenedor.addEventListener("click", () => {
+        UserDetails.style.display = "none";
+    });
+
+    $.ajax({
+        url: '/obtener_cascos/',
+        type: 'GET',
+        dataType: 'json',
+        success: function(response) {
+            var cascos = JSON.parse(response);
+
+            cascos.forEach(function(casco) {
+            var card = $('<div>').addClass('Card');
+            var cardImage = $('<div>').addClass('CardImage');
+            var cardDetails = $('<div>').addClass('CardDetails');
+
+            // Agregar la clase "CardDetailsItem" a cada elemento <p> dentro de cardDetails
+            var marca = $('<p>').addClass('Marca').text(casco.marca);
+            var modelo = $('<p>').addClass('Modelo').text(casco.modelo);
+            var precio = $('<p>').addClass('Precio').text("$ "+casco.precio);
+            var talla = $('<p>').addClass('Details').text("Talla: "+casco.talla);
+            var imageUrl = "/media/" + casco.image;
+            console.log(imageUrl);
+            var image = $('<img>').addClass('image').attr('src', imageUrl);
+            var eliminar = $('<a>').addClass('Delete').attr('href', '/eliminar_casco/').text("Eliminar");
+
+            cardDetails.append(marca);
+            cardDetails.append(modelo);
+            cardDetails.append(precio);
+            cardDetails.append(talla);
+            cardImage.append(image);
+            cardDetails.append(eliminar);
+
+            card.append(cardImage);
+            card.append(cardDetails);
+
+            $('.CardContainer').append(card);
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error(error);
+        }
+    });
+
+</script>
+</html>

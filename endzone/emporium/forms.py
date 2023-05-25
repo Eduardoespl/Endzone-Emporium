@@ -9,7 +9,12 @@ from .models import *
 class CreateUserForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['username','password1','password2']
+        fields = ['username', 'password1', 'password2']
+        widgets = {
+            'username': forms.TextInput(attrs={'placeholder': 'Nombre de usuario'}),
+            'password1': forms.PasswordInput(attrs={'placeholder': 'Contraseña'}),
+            'password2': forms.PasswordInput(attrs={'placeholder': 'Confirmar contraseña'}),
+        }
 
 class cleatsForm(forms.ModelForm):
     class Meta:
