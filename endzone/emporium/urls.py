@@ -20,5 +20,10 @@ urlpatterns = [
     path('guardar_cascos/', guardar_cascos, name='guardar_cascos'),
     path('post_casco/', post_casco, name='post_casco'),
     path('eliminar_casco/', eliminar_casco, name='eliminar_casco'),
+
+    path('cleats_page/', cleats_page, name="cleats_page"),
+    path('obtener_cleats/', obtener_cleats, name='obtener_cleats'),
+    path('guardar_cleats/', guardar_cleats, name='guardar_cleats'),
+    path('post_cleat/', post_cleat, name='post_cleat'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

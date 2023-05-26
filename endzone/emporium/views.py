@@ -16,9 +16,6 @@ def onboarding(request):
     template='hola.html'
     return render(request, template)
 
-def cascos_page(request):
-    template='cascos.html'
-    return render(request, template)
 
 def iniciar_sesion(request):
     template='login.html'
@@ -68,6 +65,11 @@ def username(request):
     return HttpResponse(user)
 
 """ Codigo que obtenga los valores del casco desde la base de datos y regrese un json con los valores """
+""" cascos"""
+
+def cascos_page(request):
+    template='cascos.html'
+    return render(request, template)
 
 def obtener_cascos(request):
     casco = cascos.objects.all()
@@ -111,3 +113,52 @@ def eliminar_casco(request):
         casco.image = request.POST.get('image')
         casco.delete()
         return render(request, 'cascos.html')
+
+""" cleats """
+
+def cleats_page(request):
+    template='cleats.html'
+    return render(request, template)
+
+def obtener_cleats(request):
+    cleat = cleats.objects.all()
+    cleat_list = list(cleat.values())  # Convert queryset to a list of dictionaries
+    cleat_json = json.dumps(cleat_list)# Serialize the list to JSON format
+    return JsonResponse(cleat_json, safe=False)
+
+def guardar_cleats(request):
+    if request.method == 'POST':
+        form = cleatsForm(request.POST, request.FILES)
+        if form.is_valid():
+            print("es valido")
+            imagen = request.FILES['image']
+            marca = request.POST['marca']
+            modelo = request.POST['modelo']
+            precio = request.POST['precio']
+            talla = request.POST['talla']
+            casco = cascos(image=imagen, marca=marca, modelo=modelo, precio=precio, talla=talla)
+            casco.save()
+            return redirect('cleats_page')
+        else:
+            print("***********")
+            print(form.errors)
+            print("no es valido")
+    else:
+        form = cleatsForm()
+    context = {'form': form}
+    return render(request, 'post_cleat.html', context)
+    
+def post_cleat(request):
+    template='post_cleat.html'
+    return render(request, template)
+
+""" def eliminar_cleat(request):
+    if request == 'POST':
+        casco = cascos()
+        casco.marca = request.POST.get('marca')
+        casco.modelo = request.POST.get('modelo')
+        casco.precio = request.POST.get('precio')
+        casco.talla = request.POST.get('talla')
+        casco.image = request.POST.get('image')
+        casco.delete()
+        return render(request, 'cascos.html') """

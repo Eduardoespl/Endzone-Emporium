@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Endzone Emporium</title>
     <link rel="icon" href="/media/icono.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <nav>
@@ -14,9 +15,9 @@
         </h1>
         <ul>
             <li class="Navegacion"><a href="#populares">+POPULARES</a></li>
-            <li class="Navegacion"><a href="/cascos">CASCOS</a></li>
-            <li class="Navegacion"><a href="">CLEATS</a></li>
-            <li class="Navegacion"><a href="">ACCESORIOS</a></li>
+            <li class="Navegacion"><a href="/cascos_page">CASCOS</a></li>
+            <li class="Navegacion"><a href="/cleats_page">CLEATS</a></li>
+            <li class="Navegacion"><a href="/accesorios_page">ACCESORIOS</a></li>
         </ul>
         <div class="AccountIcon">
             <img src="/media/user.svg" alt="user">
@@ -29,7 +30,11 @@
         {% else %}
         <p class="UserType">Usuario</p>
         {% endif %}
-        <a href="{% url 'logout' %}" class="logout"><p>logout</p></a>
+        <a href="{% url 'logout' %}" class="logout">
+            <div class="LogoutContainer">
+                <i class="material-icons">logout</i><p>Logout</p>
+            </div>
+        </a>
     </div>
     <div class="HeadContent">
         <div class="slide">
@@ -188,6 +193,11 @@
     body{
         background-color: #282828;
         font-family: 'Roboto', sans-serif;
+    }
+
+    .LogoutContainer{
+        display: flex;
+        gap: 5px;
     }
 
     .ImageCat{

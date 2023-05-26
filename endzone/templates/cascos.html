@@ -7,6 +7,7 @@
     <title>Cascos</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="icon" href="/media/icono.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <nav>
@@ -16,13 +17,18 @@
         <ul>
             <li><a href="/dashboard">DASHBOARD</a></li>
             <li><a href="">CASCOS</a></li>
-            <li><a href="">CLEATS</a></li>
-            <li><a href="">ACCESORIOS</a></li>
+            <li><a href="/cleats_page">CLEATS</a></li>
+            <li><a href="/acesorios_page">ACCESORIOS</a></li>
         </ul>
         <div class="AccountIcon">
             <img src="/media/user.svg" alt="user">
         </div>
     </nav>
+
+    <div class="NavLateral">
+        <i id="hamburguer" class="material-icons">densitysmall</i>
+    </div>
+
     <div class="UserDetails">
         <p class="UserName">{{ user }}</p>
         {% if request.user.is_superuser %}
@@ -30,7 +36,11 @@
         {% else %}
         <p class="UserType">Usuario</p>
         {% endif %}
-        <a href="{% url 'logout' %}" class="logout"><p>logout</p></a>
+        <a href="{% url 'logout' %}" class="logout">
+            <div class="LogoutContainer">
+                <i class="material-icons">logout</i><p>Logout</p>
+            </div>
+        </a>
     </div>
 
     <div class="CardContainer">
@@ -142,6 +152,11 @@
         color: white;
     }
 
+    .LogoutContainer{
+        display: flex;
+        gap: 5px;
+    }
+
     .UserName{
         font-size: 25px;
         font-weight: bold;
@@ -226,6 +241,62 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+    }
+
+    p{
+        font-size: 20px;
+    }
+
+    /*Responsive*/
+
+    @media (max-width: 425px) {
+        .Card{
+            width: 260px;
+            height: 362px;
+            flex-direction: column;
+        }
+
+        .CardImage{
+            width: 260px;
+            height: 260px;
+            border-radius: 15px 15px 0 0;
+            box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+        }
+
+        .CardDetails{
+            font-family: 'Roboto', sans-serif;
+            width: 260px;
+            height: 102px;
+            border-radius: 0 0 15px 15px;
+            gap: 5px;
+        }
+
+        .Details, .Delete{
+            display: none;
+        }
+
+        .Marca{
+            font-size: 15px;
+        }
+
+        .Modelo{
+            font-size: 20px;
+        }
+
+        .Precio{
+            font-size: 20px;
+        }
+
+        .UserDetails{
+            width: 200px;
+            height: 150px;
+            z-index: 2;
+            top: 120px;
+        }
+
+        nav{
+            display: none;
+        }
     }
 </style>
 <script>
